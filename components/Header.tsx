@@ -8,17 +8,12 @@ import Link from 'next/link'
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const leftNavItems = [
+  const allNavItems = [
     { name: 'ABOUT US', href: '/about' },
     { name: 'TUTORING', href: '/tutoring' },
-  ]
-
-  const rightNavItems = [
-    { name: 'RESOURCES', href: '/resources' },
     { name: 'COLLEGE ADMISSIONS', href: '/admissions' },
+    { name: 'RESOURCES', href: '/resources' },
   ]
-
-  const allNavItems = [...leftNavItems, ...rightNavItems]
 
   return (
     <header className="bg-white/95 backdrop-blur-md text-dark-800 sticky top-0 z-50 shadow-lg border-b border-gray-100">

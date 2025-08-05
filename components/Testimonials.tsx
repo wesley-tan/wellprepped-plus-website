@@ -7,24 +7,24 @@ import { Star, Quote } from 'lucide-react'
 const Testimonials = () => {
   const testimonials = [
     {
-      name: 'Chiara Z',
-      school: 'British School Jakarta',
-      subject: 'H. Economics',
-      content: 'Mr. Ammiel provides clear notes, thorough teaching, and is very responsive.',
+      name: 'Sarah L',
+      location: 'Singapore',
+      university: 'Harvard University',
+      content: 'Through WellPrepped+, I connected with a Harvard mentor who guided me through my application. The global access to elite mentors is game-changing.',
       rating: 5,
     },
     {
-      name: 'Alex',
-      school: 'Canadian International School',
-      subject: 'Geography',
-      content: 'WellPrepped+ lessons are enjoyable, informative, with compact and easy-to-read notes.',
+      name: 'Marcus T',
+      location: 'London, UK',
+      university: 'Oxford University',
+      content: 'The personal mentorship from an Oxford graduate was exactly what I needed. WellPrepped+ made world-class guidance accessible from anywhere.',
       rating: 5,
     },
     {
-      name: 'Charlie M',
-      school: 'British School Istanbul',
-      subject: 'Economics',
-      content: 'Ammiel explains complex concepts clearly, methodical approach, patient and encouraging.',
+      name: 'Emma K',
+      location: 'Toronto, Canada',
+      university: 'MIT',
+      content: 'My MIT mentor understood my goals perfectly. The future of education truly is personal, and WellPrepped+ proves it.',
       rating: 5,
     },
   ]
@@ -40,11 +40,11 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white font-host-grotesk mb-6">
-            What Our Students Say
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-host-grotesk mb-4">
+            Global Students, Elite Mentors
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Real feedback from our satisfied students
+          <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto font-host-grotesk">
+            Students worldwide are connecting with mentors from Harvard, Oxford, and MIT
           </p>
         </motion.div>
 
@@ -68,17 +68,17 @@ const Testimonials = () => {
 
               {/* Quote */}
               <div className="mb-6">
-                <Quote className="w-8 h-8 text-gray-400 mb-4" />
-                <p className="text-gray-300 leading-relaxed italic">
+                <Quote className="w-8 h-8 text-white/40 mb-4" />
+                <p className="text-white/80 leading-relaxed italic font-host-grotesk">
                   "{testimonial.content}"
                 </p>
               </div>
 
               {/* Student Info */}
               <div className="border-t border-white/10 pt-4">
-                <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                <p className="text-gray-400 text-sm">{testimonial.school}</p>
-                <p className="text-gray-400 text-sm">{testimonial.subject}</p>
+                <h4 className="text-white font-semibold font-host-grotesk">{testimonial.name}</h4>
+                <p className="text-white/60 text-sm font-host-grotesk">{testimonial.location}</p>
+                <p className="text-green-400 text-sm font-medium font-host-grotesk">{testimonial.university}</p>
               </div>
             </motion.div>
           ))}
