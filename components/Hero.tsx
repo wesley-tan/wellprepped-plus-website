@@ -6,8 +6,8 @@ import { motion } from 'framer-motion'
 const Hero = () => {
 
   return (
-    <section id="home" className="min-h-screen bg-dark-900 flex items-center">
-      <div className="max-w-6xl mx-auto px-4 py-20 text-center">
+    <section id="home" className="min-h-screen bg-dark-900 flex items-center overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 py-20 text-center w-full">
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -45,9 +45,9 @@ const Hero = () => {
           className="mt-16 pt-8 border-t border-white/10"
         >
           <p className="text-white/60 text-sm font-libre-franklin mb-6">Our mentors come from</p>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-6 items-center justify-items-center max-w-4xl mx-auto">
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 items-center justify-items-center max-w-4xl mx-auto px-2">
             {/* Harvard */}
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Harvard_University_coat_of_arms.svg/1200px-Harvard_University_coat_of_arms.svg.png" 
                 alt="Harvard University" 
@@ -56,7 +56,7 @@ const Hero = () => {
             </div>
             
             {/* Oxford */}
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Oxford-University-Circlet.svg/1200px-Oxford-University-Circlet.svg.png" 
                 alt="University of Oxford" 
@@ -65,7 +65,7 @@ const Hero = () => {
             </div>
             
             {/* MIT */}
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/1200px-MIT_logo.svg.png" 
                 alt="Massachusetts Institute of Technology" 
@@ -74,7 +74,7 @@ const Hero = () => {
             </div>
             
             {/* Cambridge */}
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/University_of_Cambridge_coat_of_arms_official.svg/1200px-University_of_Cambridge_coat_of_arms_official.svg.png" 
                 alt="University of Cambridge" 
@@ -83,7 +83,7 @@ const Hero = () => {
             </div>
             
             {/* Stanford */}
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Seal_of_Leland_Stanford_Junior_University.svg/1200px-Seal_of_Leland_Stanford_Junior_University.svg.png" 
                 alt="Stanford University" 
@@ -92,7 +92,7 @@ const Hero = () => {
             </div>
             
             {/* ETH Zurich */}
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white rounded-lg flex items-center justify-center p-2">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/ETH_Zurich_Logo_black.svg/1200px-ETH_Zurich_Logo_black.svg.png" 
                 alt="ETH Zurich" 

@@ -16,8 +16,8 @@ const Header = () => {
   ]
 
   return (
-    <header className="bg-white/95 backdrop-blur-md text-dark-800 sticky top-0 z-50 shadow-lg border-b border-gray-100">
-      <div className="container-custom">
+    <header className="bg-white/95 backdrop-blur-md text-dark-800 sticky top-0 z-50 shadow-lg border-b border-gray-100 w-full overflow-hidden">
+      <div className="container-custom max-w-full">
         <div className="flex flex-col items-center py-3 md:py-4 px-4 md:px-0 w-full">
           {/* Top Row - Logo and Mobile Menu */}
           <div className="flex items-center w-full mb-3 md:mb-4 relative">

@@ -23,8 +23,8 @@ const OurLessons = () => {
   ]
 
   return (
-    <section className="bg-[#1d231c] px-6 md:px-8 py-16">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-[#1d231c] px-6 md:px-8 py-16 w-full overflow-hidden">
+      <div className="max-w-4xl mx-auto w-full">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

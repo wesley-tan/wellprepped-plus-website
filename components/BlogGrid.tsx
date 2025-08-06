@@ -87,8 +87,8 @@ const BlogGrid = () => {
 
   if (loading) {
     return (
-      <section className="py-16 px-4 bg-dark-900">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16 px-4 bg-dark-900 w-full overflow-hidden">
+        <div className="max-w-6xl mx-auto w-full">
           <div className="flex items-center justify-center min-h-[400px]">
             <div className="text-center">
               <Loader2 className="w-8 h-8 animate-spin text-[#00FF88] mx-auto mb-4" />
@@ -102,8 +102,8 @@ const BlogGrid = () => {
 
   if (error) {
     return (
-      <section className="py-16 px-4 bg-dark-900">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16 px-4 bg-dark-900 w-full overflow-hidden">
+        <div className="max-w-6xl mx-auto w-full">
           <div className="text-center">
             <p className="text-red-400 font-libre-franklin mb-4">{error}</p>
             <button
@@ -119,8 +119,8 @@ const BlogGrid = () => {
   }
 
   return (
-    <section className="py-16 px-4 bg-dark-900">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-16 px-4 bg-dark-900 w-full overflow-hidden">
+      <div className="max-w-6xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

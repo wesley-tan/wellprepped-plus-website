@@ -23,8 +23,8 @@ const Statistics = () => {
   ]
 
   return (
-    <section className="py-16 px-4 bg-dark-900">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-16 px-4 bg-dark-900 w-full overflow-hidden">
+      <div className="max-w-6xl mx-auto w-full">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
