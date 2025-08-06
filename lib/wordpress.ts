@@ -166,24 +166,74 @@ export async function getWordPressPosts(params: {
 
 // Sample blog data for testing when WordPress is not configured
 function getSampleBlogData(params: any): { posts: WordPressPost[], totalPages: number, totalPosts: number } {
-  const samplePosts: Partial<WordPressPost>[] = [
+  const samplePosts: WordPressPost[] = [
     {
       id: 1,
       slug: 'how-to-ace-ib-economics',
       title: { rendered: 'How to Ace IB Economics: A Complete Guide' },
-      excerpt: { rendered: 'Master the key concepts, evaluation techniques, and exam strategies that helped our mentors achieve 7s in IB Economics.' },
-      content: { rendered: '<h2>Understanding Core Concepts</h2><p>Economics can seem daunting at first, but with the right approach...</p>' },
+      excerpt: { rendered: 'Master the key concepts, evaluation techniques, and exam strategies that helped our mentors achieve 7s in IB Economics.', protected: false },
+      content: { rendered: '<h2>Understanding Core Concepts</h2><p>Economics can seem daunting at first, but with the right approach and understanding of key concepts, you can excel in this subject.</p>', protected: false },
       date: '2024-01-15T10:00:00Z',
+      date_gmt: '2024-01-15T10:00:00Z',
+      guid: { rendered: 'https://example.com/?p=1' },
+      modified: '2024-01-15T10:00:00Z',
+      modified_gmt: '2024-01-15T10:00:00Z',
+      status: 'publish',
+      type: 'post',
+      link: 'https://example.com/how-to-ace-ib-economics',
+      author: 1,
+      featured_media: 1,
+      comment_status: 'open',
+      ping_status: 'open',
+      sticky: false,
+      template: '',
+      format: 'standard',
+      meta: [],
+      categories: [1],
+      tags: [1, 2],
+      _links: {},
       _embedded: {
-        author: [{ id: 1, name: 'Sarah Chen', description: 'Economics Mentor, Cambridge Graduate' }],
-        'wp:term': [[{ name: 'IB Subjects' }], [{ name: 'Economics' }, { name: 'Study Tips' }]],
-        'wp:featuredmedia': [{ source_url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&q=80' }]
+        author: [{ 
+          id: 1, 
+          name: 'Sarah Chen', 
+          description: 'Economics Mentor, Cambridge Graduate',
+          link: '',
+          slug: 'sarah-chen',
+          avatar_urls: { '96': '' }
+        }],
+        'wp:term': [[{ id: 1, name: 'IB Subjects', slug: 'ib-subjects', taxonomy: 'category', link: '' }], [{ id: 1, name: 'Economics', slug: 'economics', taxonomy: 'post_tag', link: '' }, { id: 2, name: 'Study Tips', slug: 'study-tips', taxonomy: 'post_tag', link: '' }]],
+        'wp:featuredmedia': [{ 
+          id: 1,
+          date: '2024-01-15T10:00:00Z',
+          slug: 'featured-image',
+          type: 'attachment',
+          link: '',
+          title: { rendered: 'Featured Image' },
+          author: 1,
+          media_type: 'image',
+          mime_type: 'image/jpeg',
+          media_details: {
+            width: 800,
+            height: 600,
+            file: 'featured.jpg',
+            sizes: {
+              large: {
+                file: 'featured-large.jpg',
+                width: 800,
+                height: 600,
+                mime_type: 'image/jpeg',
+                source_url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&q=80'
+              }
+            }
+          },
+          source_url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&q=80'
+        }]
       }
-    },
+    }
   ]
 
   return {
-    posts: samplePosts as WordPressPost[],
+    posts: samplePosts,
     totalPages: 1,
     totalPosts: samplePosts.length
   }
@@ -192,6 +242,12 @@ function getSampleBlogData(params: any): { posts: WordPressPost[], totalPages: n
 // Fetch a single post by slug
 export async function getWordPressPost(slug: string): Promise<WordPressPost | null> {
   try {
+    // If no WordPress URL is configured, return sample data for testing
+    if (!WORDPRESS_API_URL || WORDPRESS_API_URL.includes('your-wordpress-site.com')) {
+      const sampleData = getSampleBlogData({})
+      return sampleData.posts.find(post => post.slug === slug) || null
+    }
+
     const response = await fetch(`${WORDPRESS_API_URL}/posts?slug=${slug}&_embed=true`, {
       next: { revalidate: 300 },
     })
@@ -204,7 +260,9 @@ export async function getWordPressPost(slug: string): Promise<WordPressPost | nu
     return posts[0] || null
   } catch (error) {
     console.error('Error fetching WordPress post:', error)
-    return null
+    // Fallback to sample data on error
+    const sampleData = getSampleBlogData({})
+    return sampleData.posts.find(post => post.slug === slug) || null
   }
 }
 
