@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Libre_Franklin } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const libreFranklin = Libre_Franklin({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'WellPrepped+ - Elite Mentorship from Top Universities',
@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-dark-900 text-white`}>
+      <body className={`${libreFranklin.className} bg-dark-900 text-white`}>
         {children}
       </body>
     </html>

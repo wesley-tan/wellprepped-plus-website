@@ -2,54 +2,62 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { GraduationCap, MapPin, Users, Award } from 'lucide-react'
 
 const AdmissionsHero = () => {
   return (
-    <section className="bg-[#1d231c] px-6 md:px-8 lg:px-16 py-16 md:py-20">
+    <section className="pt-32 pb-16 px-4 bg-dark-900">
       <div className="max-w-6xl mx-auto text-center">
-        <motion.div
+        <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-6"
+          transition={{ duration: 0.8, ease: [0.6, 0, 0.2, 1] }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-libre-franklin mb-6"
         >
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-host-grotesk leading-tight tracking-tight">
-            College Admissions Support
-          </h1>
-          <p className="text-base md:text-lg lg:text-xl text-white/90 font-host-grotesk leading-relaxed max-w-3xl mx-auto">
-            Navigate the competitive world of university admissions with expert guidance. From application strategy 
-            to interview preparation, we help you secure your place at top institutions worldwide.
-          </p>
-          
-          {/* Success Metrics */}
-          <div className="grid md:grid-cols-4 gap-4 mt-8 max-w-4xl mx-auto">
-            {[
-              { icon: GraduationCap, number: "95%", label: "Acceptance Rate" },
-              { icon: MapPin, number: "50+", label: "Countries" },
-              { icon: Users, number: "500+", label: "Students Placed" },
-              { icon: Award, number: "13", label: "Top 50 Universities" }
-            ].map((metric, index) => (
-              <motion.div
-                key={metric.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl p-4 border border-white/10"
-              >
-                <metric.icon className="w-6 h-6 text-green-400 mx-auto mb-2" />
-                <div className="text-lg font-bold text-white font-inter">{metric.number}</div>
-                <div className="text-white/70 text-xs font-host-grotesk">{metric.label}</div>
-              </motion.div>
-            ))}
+          College <span className="text-[#00FF88]">Admissions</span> Support
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.6, 0, 0.2, 1] }}
+          className="text-lg md:text-xl text-white/80 font-libre-franklin max-w-3xl mx-auto mb-12"
+        >
+          Navigate university admissions with expert guidance. From application strategy to interview preparation, we help you secure your place at top institutions.
+        </motion.p>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.6, 0, 0.2, 1] }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-2xl mx-auto"
+        >
+          <div className="text-center">
+            <div className="text-2xl font-bold text-white font-libre-franklin">95%</div>
+            <div className="text-white/70 text-sm font-libre-franklin">Acceptance Rate</div>
           </div>
-
-          <div className="pt-4">
-            <button className="bg-[#283b28] hover:bg-[#1f2d1f] text-white font-semibold py-3 px-8 rounded-full text-base font-host-grotesk transition-all duration-300">
-              Schedule Consultation
-            </button>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-white font-libre-franklin">50+</div>
+            <div className="text-white/70 text-sm font-libre-franklin">Countries</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-white font-libre-franklin">500+</div>
+            <div className="text-white/70 text-sm font-libre-franklin">Students Placed</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-white font-libre-franklin">13</div>
+            <div className="text-white/70 text-sm font-libre-franklin">Top Universities</div>
           </div>
         </motion.div>
+
+        <motion.button 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.6, 0, 0.2, 1] }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-8 py-3 bg-[#00FF88] text-black font-semibold rounded-lg font-libre-franklin text-lg hover:bg-[#00FF88]/80 transition-colors"
+        >
+          Schedule Consultation
+        </motion.button>
       </div>
     </section>
   )

@@ -54,10 +54,10 @@ const AcademicTools = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-host-grotesk leading-tight tracking-tight mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-libre-franklin leading-tight tracking-tight mb-4">
             Academic Tools
           </h2>
-          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-host-grotesk">
+          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-libre-franklin">
             Essential tools to organize, track, and optimize your IB journey
           </p>
         </motion.div>
@@ -89,7 +89,7 @@ const AcademicTools = () => {
                   
                   {/* Content */}
                   <div className="text-center flex-grow flex flex-col">
-                    <h3 className="text-lg font-bold text-white mb-3 font-host-grotesk">
+                    <h3 className="text-lg font-bold text-white mb-3 font-libre-franklin">
                       {tool.title}
                     </h3>
                     <p className="text-white/80 leading-relaxed text-sm flex-grow">
@@ -98,7 +98,7 @@ const AcademicTools = () => {
                     
                     {/* Launch Button */}
                     <div className="mt-4">
-                      <button className="text-green-400 hover:text-green-300 font-semibold text-sm font-host-grotesk transition-colors duration-300 flex items-center justify-center gap-1">
+                      <button className="text-green-400 hover:text-green-300 font-semibold text-sm font-libre-franklin transition-colors duration-300 flex items-center justify-center gap-1">
                         Launch Tool →
                       </button>
                     </div>
@@ -121,13 +121,13 @@ const AcademicTools = () => {
           className="text-center mt-12"
         >
           <div className="bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 max-w-2xl mx-auto">
-            <h3 className="text-lg font-bold text-white mb-2 font-host-grotesk">
+            <h3 className="text-lg font-bold text-white mb-2 font-libre-franklin">
               Need a Custom Tool?
             </h3>
-            <p className="text-white/80 text-sm mb-4 font-host-grotesk">
+            <p className="text-white/80 text-sm mb-4 font-libre-franklin">
               We're always developing new tools based on student needs. Let us know what would help you most!
             </p>
-            <button className="bg-gradient-to-r from-[#283b28] to-[#1f2d1f] hover:from-[#1f2d1f] hover:to-[#141a14] text-white font-semibold py-2 px-6 rounded-full text-sm font-host-grotesk transition-all duration-300">
+            <button className="bg-gradient-to-r from-[#283b28] to-[#1f2d1f] hover:from-[#1f2d1f] hover:to-[#141a14] text-white font-semibold py-2 px-6 rounded-full text-sm font-libre-franklin transition-all duration-300">
               Request a Tool
             </button>
           </div>

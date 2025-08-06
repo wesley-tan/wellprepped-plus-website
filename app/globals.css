@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,8 +13,7 @@
   --color-accent-gold: #ffd700;
   --color-accent-green: #4ade80;
 
-  --font-inter: "Inter", system-ui, sans-serif;
-  --font-host-grotesk: "Host Grotesk", system-ui, sans-serif;
+  --font-libre-franklin: "Libre Franklin", system-ui, sans-serif;
 
   --text-hero-headline: clamp(2rem, 5vw, 3.5rem);
   --text-section-headline: clamp(1.5rem, 4vw, 2.5rem);
@@ -44,7 +42,7 @@
   body {
     background-color: var(--color-primary-dark);
     color: var(--color-text-primary);
-    font-family: var(--font-inter);
+    font-family: var(--font-libre-franklin);
     font-size: var(--text-body);
     font-weight: var(--font-weight-regular);
     line-height: 1.6;
@@ -168,5 +166,152 @@
   }
   to {
     height: 0;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* WordPress Content Styling */
+@layer components {
+  .wordpress-content {
+    font-family: var(--font-libre-franklin);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+  }
+  
+  .wordpress-content h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: white;
+    margin: 2rem 0 1.5rem 0;
+    font-family: var(--font-libre-franklin);
+  }
+  
+  .wordpress-content h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: white;
+    margin: 1.75rem 0 1rem 0;
+    font-family: var(--font-libre-franklin);
+  }
+  
+  .wordpress-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin: 1.5rem 0 0.75rem 0;
+    font-family: var(--font-libre-franklin);
+  }
+  
+  .wordpress-content h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin: 1.25rem 0 0.5rem 0;
+    font-family: var(--font-libre-franklin);
+  }
+  
+  .wordpress-content p {
+    margin: 1rem 0;
+    line-height: 1.7;
+  }
+  
+  .wordpress-content ul,
+  .wordpress-content ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+  
+  .wordpress-content li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+  
+  .wordpress-content strong {
+    color: white;
+    font-weight: 600;
+  }
+  
+  .wordpress-content em {
+    font-style: italic;
+  }
+  
+  .wordpress-content a {
+    color: #00FF88;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+  
+  .wordpress-content a:hover {
+    color: rgba(0, 255, 136, 0.8);
+  }
+  
+  .wordpress-content blockquote {
+    border-left: 4px solid #00FF88;
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .wordpress-content code {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+  }
+  
+  .wordpress-content pre {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  
+  .wordpress-content pre code {
+    background: none;
+    padding: 0;
+  }
+  
+  .wordpress-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .wordpress-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  
+  .wordpress-content th,
+  .wordpress-content td {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .wordpress-content th {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    color: white;
   }
 }

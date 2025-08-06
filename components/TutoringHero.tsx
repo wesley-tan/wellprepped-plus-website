@@ -5,27 +5,34 @@ import { motion } from 'framer-motion'
 
 const TutoringHero = () => {
   return (
-    <section id="tutoring" className="bg-[#1d231c] px-6 md:px-8 lg:px-16 py-16 md:py-20">
+    <section className="pt-32 pb-16 px-4 bg-dark-900">
       <div className="max-w-6xl mx-auto text-center">
-        <motion.div
+        <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-6"
+          transition={{ duration: 0.8, ease: [0.6, 0, 0.2, 1] }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-libre-franklin mb-6"
         >
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-host-grotesk leading-tight tracking-tight">
-            Expert IB Tutoring Services
-          </h1>
-          <p className="text-base md:text-lg lg:text-xl text-white/90 font-host-grotesk leading-relaxed max-w-3xl mx-auto">
-            Comprehensive support from top IB scorers worldwide. From subject mastery to extended essays, 
-            we provide personalized guidance to help you excel in your IB journey.
-          </p>
-          <div className="pt-4">
-            <button className="bg-[#283b28] hover:bg-[#1f2d1f] text-white font-semibold py-3 px-8 rounded-full text-base font-host-grotesk transition-all duration-300">
-              Book Your First Lesson
-            </button>
-          </div>
-        </motion.div>
+          IB <span className="text-[#00FF88]">Tutoring</span> Services
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.6, 0, 0.2, 1] }}
+          className="text-lg md:text-xl text-white/80 font-libre-franklin max-w-3xl mx-auto mb-12"
+        >
+          Comprehensive support from top IB scorers worldwide. Personalized guidance to help you excel in your IB journey.
+        </motion.p>
+        <motion.button 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.6, 0, 0.2, 1] }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-8 py-3 bg-[#00FF88] text-black font-semibold rounded-lg font-libre-franklin text-lg hover:bg-[#00FF88]/80 transition-colors"
+        >
+          Book Your First Lesson
+        </motion.button>
       </div>
     </section>
   )

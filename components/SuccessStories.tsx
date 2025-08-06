@@ -52,10 +52,10 @@ const SuccessStories = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-host-grotesk leading-tight tracking-tight mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-libre-franklin leading-tight tracking-tight mb-4">
             Success Stories
           </h2>
-          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-host-grotesk">
+          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-libre-franklin">
             Real students, real results. See how our guidance helped them achieve their university dreams.
           </p>
         </motion.div>
@@ -70,10 +70,10 @@ const SuccessStories = () => {
         >
           {achievements.map((achievement, index) => (
             <div key={index} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-green-400 font-inter mb-1">
+              <div className="text-2xl md:text-3xl font-bold text-green-400 font-libre-franklin mb-1">
                 {achievement.metric}
               </div>
-              <div className="text-white/70 text-xs font-host-grotesk leading-tight">
+              <div className="text-white/70 text-xs font-libre-franklin leading-tight">
                 {achievement.label}
               </div>
             </div>
@@ -108,7 +108,7 @@ const SuccessStories = () => {
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-white/90 text-sm leading-relaxed mb-4 flex-grow font-host-grotesk italic">
+                <blockquote className="text-white/90 text-sm leading-relaxed mb-4 flex-grow font-libre-franklin italic">
                   "{story.quote}"
                 </blockquote>
 
@@ -121,24 +121,24 @@ const SuccessStories = () => {
                       </span>
                     </div>
                     <div>
-                      <div className="text-white font-semibold text-sm font-host-grotesk">
+                      <div className="text-white font-semibold text-sm font-libre-franklin">
                         {story.name}
                       </div>
-                      <div className="text-green-400 text-xs font-semibold font-host-grotesk">
+                      <div className="text-green-400 text-xs font-semibold font-libre-franklin">
                         {story.grade}
                       </div>
                     </div>
                   </div>
                   
-                  <div className="text-white/80 text-xs font-host-grotesk mb-1">
+                  <div className="text-white/80 text-xs font-libre-franklin mb-1">
                     {story.program}
                   </div>
-                  <div className="text-white font-semibold text-sm font-host-grotesk mb-2">
+                  <div className="text-white font-semibold text-sm font-libre-franklin mb-2">
                     {story.university}
                   </div>
                   <div className="flex items-center gap-1 text-white/60 text-xs">
                     <MapPin className="w-3 h-3" />
-                    <span className="font-host-grotesk">{story.country}</span>
+                    <span className="font-libre-franklin">{story.country}</span>
                   </div>
                 </div>
 
@@ -157,14 +157,14 @@ const SuccessStories = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <h3 className="text-lg font-bold text-white mb-4 font-host-grotesk">
+          <h3 className="text-lg font-bold text-white mb-4 font-libre-franklin">
             Ready to Write Your Success Story?
           </h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gradient-to-r from-[#283b28] to-[#1f2d1f] hover:from-[#1f2d1f] hover:to-[#141a14] text-white font-semibold py-3 px-8 rounded-full text-base font-host-grotesk transition-all duration-300">
+            <button className="bg-gradient-to-r from-[#283b28] to-[#1f2d1f] hover:from-[#1f2d1f] hover:to-[#141a14] text-white font-semibold py-3 px-8 rounded-full text-base font-libre-franklin transition-all duration-300">
               Start Your Journey
             </button>
-            <button className="text-white/80 hover:text-white font-semibold py-3 px-6 rounded-full text-base font-host-grotesk transition-all duration-300 border border-white/20 hover:border-white/40">
+            <button className="text-white/80 hover:text-white font-semibold py-3 px-6 rounded-full text-base font-libre-franklin transition-all duration-300 border border-white/20 hover:border-white/40">
               View More Stories
             </button>
           </div>

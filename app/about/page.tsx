@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import About from '@/components/About'
+import AcademicTeam from '@/components/AcademicTeam'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-dark-900">
       <Header />
       <About />
+      <AcademicTeam />
       <Footer />
     </main>
   )

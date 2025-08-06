@@ -24,7 +24,7 @@ const Footer = () => {
               <div className="w-8 h-8 border-2 border-white rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">W</span>
               </div>
-              <span className="text-2xl font-bold text-white font-host-grotesk">WellPrepped+</span>
+              <span className="text-2xl font-bold text-white font-libre-franklin">WellPrepped+</span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
               Premier IB education service providing world-class mentorship from top IB scorers worldwide.

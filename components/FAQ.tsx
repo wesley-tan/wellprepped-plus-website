@@ -42,10 +42,10 @@ const FAQ = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-host-grotesk leading-tight tracking-tight mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-libre-franklin leading-tight tracking-tight mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-host-grotesk">
+          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-libre-franklin">
             Learn more about connecting with elite mentors and accessing world-class guidance from anywhere
           </p>
         </motion.div>
@@ -81,10 +81,10 @@ const FAQ = () => {
           className="text-center mt-12"
         >
           <div className="glass-effect p-6 max-w-2xl mx-auto">
-            <h3 className="text-lg font-bold text-white mb-2 font-host-grotesk">
+            <h3 className="text-lg font-bold text-white mb-2 font-libre-franklin">
               Ready to connect with elite mentors?
             </h3>
-            <p className="text-white/80 text-sm mb-4 font-host-grotesk">
+            <p className="text-white/80 text-sm mb-4 font-libre-franklin">
               Join students worldwide who are accessing world-class mentorship from the planet's top universities.
             </p>
             <button className="btn-primary">

@@ -53,10 +53,10 @@ const UniversityPartners = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-host-grotesk leading-tight tracking-tight mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-libre-franklin leading-tight tracking-tight mb-4">
             University Network
           </h2>
-          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-host-grotesk">
+          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-libre-franklin">
             Our students have been accepted to top universities worldwide
           </p>
         </motion.div>
@@ -71,10 +71,10 @@ const UniversityPartners = () => {
         >
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-green-400 font-inter mb-1">
+              <div className="text-2xl md:text-3xl font-bold text-green-400 font-libre-franklin mb-1">
                 {stat.number}
               </div>
-              <div className="text-white/70 text-sm font-host-grotesk">
+              <div className="text-white/70 text-sm font-libre-franklin">
                 {stat.label}
               </div>
             </div>
@@ -106,10 +106,10 @@ const UniversityPartners = () => {
                       <IconComponent className="w-full h-full text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-white font-host-grotesk">
+                      <h3 className="text-lg font-bold text-white font-libre-franklin">
                         {region.region}
                       </h3>
-                      <div className="text-green-400 text-sm font-semibold font-host-grotesk">
+                      <div className="text-green-400 text-sm font-semibold font-libre-franklin">
                         {region.count}
                       </div>
                     </div>
@@ -120,11 +120,11 @@ const UniversityPartners = () => {
                     {region.universities.map((uni, idx) => (
                       <div key={idx} className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                        <span className="text-white/80 text-sm font-host-grotesk">{uni}</span>
+                        <span className="text-white/80 text-sm font-libre-franklin">{uni}</span>
                       </div>
                     ))}
                     <div className="pt-2">
-                      <span className="text-white/60 text-xs font-host-grotesk">+ many more...</span>
+                      <span className="text-white/60 text-xs font-libre-franklin">+ many more...</span>
                     </div>
                   </div>
 
@@ -145,13 +145,13 @@ const UniversityPartners = () => {
           className="text-center mt-12"
         >
           <div className="bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 max-w-2xl mx-auto">
-            <h3 className="text-lg font-bold text-white mb-2 font-host-grotesk">
+            <h3 className="text-lg font-bold text-white mb-2 font-libre-franklin">
               Ready to Apply?
             </h3>
-            <p className="text-white/80 text-sm mb-4 font-host-grotesk">
+            <p className="text-white/80 text-sm mb-4 font-libre-franklin">
               Schedule a consultation to discuss your university goals and create your personalized application strategy.
             </p>
-            <button className="bg-gradient-to-r from-[#283b28] to-[#1f2d1f] hover:from-[#1f2d1f] hover:to-[#141a14] text-white font-semibold py-3 px-8 rounded-full text-base font-host-grotesk transition-all duration-300">
+            <button className="bg-gradient-to-r from-[#283b28] to-[#1f2d1f] hover:from-[#1f2d1f] hover:to-[#141a14] text-white font-semibold py-3 px-8 rounded-full text-base font-libre-franklin transition-all duration-300">
               Get Started Today
             </button>
           </div>

@@ -33,8 +33,8 @@ const PracticeTests = () => {
   ]
 
   return (
-    <section className="bg-[#1d231c] py-12 md:py-16 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-[#1d231c] py-16 px-6 md:px-8">
+      <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,10 +42,10 @@ const PracticeTests = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-host-grotesk leading-tight tracking-tight mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white font-libre-franklin leading-tight tracking-tight mb-4">
             Practice Tests
           </h2>
-          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-host-grotesk">
+          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto font-libre-franklin">
             Comprehensive test preparation with past papers, mock exams, and targeted practice
           </p>
         </motion.div>
@@ -83,10 +83,10 @@ const PracticeTests = () => {
 
                   {/* Content */}
                   <div className="relative z-10 text-center">
-                    <h3 className="text-xl font-bold text-white mb-2 font-host-grotesk">
+                    <h3 className="text-xl font-bold text-white mb-2 font-libre-franklin">
                       {test.title}
                     </h3>
-                    <h4 className="text-green-400 font-semibold text-sm mb-3 font-host-grotesk">
+                    <h4 className="text-green-400 font-semibold text-sm mb-3 font-libre-franklin">
                       {test.subtitle}
                     </h4>
                     <p className="text-white/80 leading-relaxed text-sm mb-4">
@@ -98,13 +98,13 @@ const PracticeTests = () => {
                       {test.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center justify-center gap-2">
                           <TrendingUp className="w-3 h-3 text-green-400" />
-                          <span className="text-white/70 text-xs font-host-grotesk">{feature}</span>
+                          <span className="text-white/70 text-xs font-libre-franklin">{feature}</span>
                         </div>
                       ))}
                     </div>
 
                     {/* Access Button */}
-                    <button className="bg-gradient-to-r from-[#283b28] to-[#1f2d1f] hover:from-[#1f2d1f] hover:to-[#141a14] text-white font-semibold py-2 px-6 rounded-full text-sm font-host-grotesk transition-all duration-300">
+                    <button className="bg-gradient-to-r from-[#283b28] to-[#1f2d1f] hover:from-[#1f2d1f] hover:to-[#141a14] text-white font-semibold py-2 px-6 rounded-full text-sm font-libre-franklin transition-all duration-300">
                       Start Practice
                     </button>
                   </div>

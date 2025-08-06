@@ -8,10 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'host-grotesk': ['Host Grotesk', 'system-ui', 'sans-serif'],
-        'inter': ['Inter', 'system-ui', 'sans-serif'],
-        'manrope': ['Manrope', 'system-ui', 'sans-serif'],
-        'sans': ['Host Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+        'libre-franklin': ['Libre Franklin', 'system-ui', 'sans-serif'],
+        'sans': ['Libre Franklin', 'system-ui', 'sans-serif'],
       },
       colors: {
         primary: {
@@ -43,9 +41,7 @@ module.exports = {
           yellow: '#fbbf24',
         }
       },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-      },
+
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
