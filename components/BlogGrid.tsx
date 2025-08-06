@@ -4,16 +4,16 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Calendar, Clock, User, ArrowRight, Loader2 } from 'lucide-react'
-import { 
-  getWordPressPosts, 
-  getFeaturedImageUrl, 
-  getAuthorInfo, 
-  getPostCategories, 
+import {
+  getWordPressPosts,
+  getFeaturedImageUrl,
+  getAuthorInfo,
+  getPostCategories,
   getPostTags,
   calculateReadingTime,
   formatWordPressDate,
   stripHtmlTags,
-  type WordPressPost 
+  type WordPressPost
 } from '@/lib/wordpress'
 
 const BlogGrid = () => {
@@ -33,7 +33,6 @@ const BlogGrid = () => {
     'General': 'bg-gray-500/20 text-gray-300',
   }
 
-  // Fetch initial posts
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -49,14 +48,11 @@ const BlogGrid = () => {
         setLoading(false)
       }
     }
-
     fetchPosts()
   }, [])
 
-  // Load more posts
   const loadMorePosts = async () => {
     if (currentPage >= totalPages || loadingMore) return
-
     try {
       setLoadingMore(true)
       const nextPage = currentPage + 1
@@ -70,7 +66,6 @@ const BlogGrid = () => {
     }
   }
 
-  // Transform WordPress post for display
   const transformPost = (post: WordPressPost) => {
     const author = getAuthorInfo(post)
     const categories = getPostCategories(post)
@@ -94,9 +89,11 @@ const BlogGrid = () => {
     return (
       <section className="py-16 px-4 bg-dark-900">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-[#00FF88]" />
-            <span className="ml-3 text-white font-libre-franklin">Loading articles...</span>
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="text-center">
+              <Loader2 className="w-8 h-8 animate-spin text-[#00FF88] mx-auto mb-4" />
+              <p className="text-white/70 font-libre-franklin">Loading articles...</p>
+            </div>
           </div>
         </div>
       </section>
@@ -107,9 +104,9 @@ const BlogGrid = () => {
     return (
       <section className="py-16 px-4 bg-dark-900">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center py-20">
-            <p className="text-white/70 font-libre-franklin mb-4">{error}</p>
-            <button 
+          <div className="text-center">
+            <p className="text-red-400 font-libre-franklin mb-4">{error}</p>
+            <button
               onClick={() => window.location.reload()}
               className="px-6 py-3 bg-[#00FF88] text-black font-semibold rounded-lg font-libre-franklin hover:bg-[#00FF88]/80 transition-colors"
             >
@@ -124,13 +121,12 @@ const BlogGrid = () => {
   return (
     <section className="py-16 px-4 bg-dark-900">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.6, 0, 0.2, 1] }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white font-libre-franklin mb-4">
             Latest Articles
@@ -140,7 +136,6 @@ const BlogGrid = () => {
           </p>
         </motion.div>
 
-        {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((wpPost, index) => {
             const post = transformPost(wpPost)
@@ -153,7 +148,6 @@ const BlogGrid = () => {
                 viewport={{ once: true }}
                 className="bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden hover:bg-white/10 transition-all duration-300 group"
               >
-                {/* Featured Image */}
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={post.featuredImage}
@@ -167,9 +161,7 @@ const BlogGrid = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="p-6">
-                  {/* Meta Info */}
                   <div className="flex items-center gap-4 text-xs text-white/60 mb-3 font-libre-franklin">
                     <div className="flex items-center gap-1">
                       <Calendar size={12} />
@@ -181,17 +173,14 @@ const BlogGrid = () => {
                     </div>
                   </div>
 
-                  {/* Title */}
                   <h3 className="text-lg font-bold text-white mb-3 font-libre-franklin group-hover:text-[#00FF88] transition-colors line-clamp-2">
                     {post.title}
                   </h3>
 
-                  {/* Excerpt */}
                   <p className="text-white/70 text-sm mb-4 font-libre-franklin line-clamp-3">
                     {post.excerpt}
                   </p>
 
-                  {/* Author */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <User size={16} className="text-white/60" />
@@ -204,7 +193,7 @@ const BlogGrid = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <Link href={`/blog/${post.id}`}>
                       <button className="flex items-center gap-1 text-[#00FF88] hover:text-[#00FF88]/80 transition-colors text-sm font-semibold font-libre-franklin">
                         Read More
@@ -213,7 +202,6 @@ const BlogGrid = () => {
                     </Link>
                   </div>
 
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-2 mt-4">
                     {post.tags.slice(0, 3).map((tag) => (
                       <span
@@ -230,16 +218,15 @@ const BlogGrid = () => {
           })}
         </div>
 
-        {/* Load More Button */}
         {currentPage < totalPages && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.6, 0, 0.2, 1] }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.6, 0, 0.2, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
             className="text-center mt-12"
           >
-            <button 
+            <button
               onClick={loadMorePosts}
               disabled={loadingMore}
               className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg font-libre-franklin transition-all duration-300 border border-white/20 hover:border-white/40 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 mx-auto"
