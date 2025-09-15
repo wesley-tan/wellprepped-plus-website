@@ -17,7 +17,7 @@ const BlogPage = async () => {
     ]);
 
     // Transform Notion posts to our format
-    blogPosts = notionPosts.map(post => ({
+    blogPosts = notionPosts.map((post: any) => ({
       id: post.id,
       title: post.title,
       excerpt: post.excerpt || "Read more about this topic...",
@@ -109,7 +109,7 @@ const BlogPage = async () => {
         <section className="bg-background py-20">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post, index) => (
+              {blogPosts.map((post: any, index: number) => (
                 <Link key={post.id || index} href={`/blog/${post.slug}`} className="block">
                   <article className="bg-background-alt rounded-lg overflow-hidden border border-background/10 hover:shadow-lg hover:border-accent/20 transition-all duration-300 group cursor-pointer">
                   <div className="relative h-48">

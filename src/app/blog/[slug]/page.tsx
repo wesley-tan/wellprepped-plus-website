@@ -6,9 +6,9 @@ import { notFound } from "next/navigation";
 import { getPostBySlug, formatDate } from "@/lib/notion";
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Component to render Notion content blocks
@@ -59,11 +59,12 @@ const ContentBlock = ({ block }: { block: any }) => {
 };
 
 const BlogPostPage = async ({ params }: BlogPostPageProps) => {
+  const { slug } = await params;
   let post = null;
   
   try {
     // Fetch the specific post from Notion
-    post = await getPostBySlug(params.slug);
+    post = await getPostBySlug(slug);
     
     if (!post) {
       notFound();
