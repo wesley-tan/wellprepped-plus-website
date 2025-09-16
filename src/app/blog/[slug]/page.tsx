@@ -181,19 +181,7 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
                   </div>
                 </div>
 
-                {/* Tags */}
-                {post.tags && post.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {post.tags.map((tag: string, index: number) => (
-                      <span 
-                        key={index}
-                        className="bg-foreground/10 text-foreground px-2 py-1 rounded text-xs"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                {/* Tags - Currently not used in static posts */}
               </header>
 
               {/* Featured Image */}
