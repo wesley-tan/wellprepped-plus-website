@@ -11,21 +11,24 @@ const Navigation = () => {
   const pathname = usePathname();
 
   const menuItems = [
-    { name: "Home", href: "/", section: "home" },
-    { name: "Our Team", href: "/team", section: "team" },
-    { name: "Services", href: "/services", section: "services" },
-    { name: "College Admissions", href: "/college-admissions", section: "admissions" },
-    { name: "Blog", href: "/blog", section: "blog" },
-    { name: "Contact Us", href: "/contact", section: "contact" },
+    { name: "Home", href: "/", section: "home", isHomepageSection: false },
+    { name: "Services", href: "/services", section: "services", isHomepageSection: false },
+    { name: "Team", href: "/team", section: "team", isHomepageSection: false },
+    { name: "Blog", href: "/blog", section: "blog", isHomepageSection: false },
+    { name: "Contact Us", href: "/contact", section: "contact", isHomepageSection: false },
   ];
 
   // Handle smooth scrolling for homepage sections
   const handleSectionClick = (sectionId: string) => {
-    if (pathname === "/" && sectionId !== "home") {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-        setActiveSection(sectionId);
+    if (pathname === "/") {
+      if (sectionId === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          setActiveSection(sectionId);
+        }
       }
     }
     setIsOpen(false);
@@ -67,24 +70,24 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="font-display font-bold text-2xl text-foreground">
+            <h1 className="font-display font-bold text-xl md:text-2xl text-foreground">
               WellPrepped+
             </h1>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          <div className="hidden lg:block">
+            <div className="ml-10 flex items-baseline space-x-6">
               {menuItems.map((item) => {
                 const isActive = pathname === item.href || (pathname === "/" && activeSection === item.section);
                 
                 // Handle homepage section navigation vs regular page navigation
-                if (pathname === "/" && item.href === "/" && item.section) {
+                if (pathname === "/" && item.isHomepageSection) {
                   return (
                     <button
                       key={item.name}
                       onClick={() => handleSectionClick(item.section)}
-                      className={`px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-full relative overflow-hidden group ${
+                      className={`px-3 py-2 text-sm font-medium transition-all duration-300 rounded-full relative overflow-hidden group ${
                         isActive
                           ? "text-accent bg-accent/10 shadow-lg"
                           : "text-foreground hover:text-accent hover:bg-foreground/5"
@@ -100,7 +103,7 @@ const Navigation = () => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-full relative overflow-hidden group ${
+                    className={`px-3 py-2 text-sm font-medium transition-all duration-300 rounded-full relative overflow-hidden group ${
                       isActive
                         ? "text-accent bg-accent/10 shadow-lg"
                         : "text-foreground hover:text-accent hover:bg-foreground/5"
@@ -115,14 +118,19 @@ const Navigation = () => {
           </div>
 
           {/* CTA Button (Desktop) */}
-          <div className="hidden md:block">
-            <button className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105">
+          <div className="hidden lg:block">
+            <a 
+              href="https://tally.so/r/wellprepped-plus"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105"
+            >
               Get Started
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={toggleMenu}
               className="text-foreground hover:text-primary p-2 rounded-md transition-colors duration-200"
@@ -138,13 +146,13 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}>
+        <div className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}>
           <div className="px-4 pt-4 pb-6 space-y-2 bg-background/98 backdrop-blur-md border-t border-foreground/20 shadow-xl">
             {menuItems.map((item) => {
               const isActive = pathname === item.href || (pathname === "/" && activeSection === item.section);
               
               // Handle homepage section navigation vs regular page navigation
-              if (pathname === "/" && item.href === "/" && item.section) {
+              if (pathname === "/" && item.isHomepageSection) {
                 return (
                   <button
                     key={item.name}
@@ -177,12 +185,15 @@ const Navigation = () => {
             })}
             {/* Mobile CTA Button */}
             <div className="pt-4">
-              <button 
-                className="w-full bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 px-6 py-4 rounded-xl text-base font-bold transition-all duration-300 transform hover:scale-105 shadow-lg"
+              <a 
+                href="https://tally.so/r/wellprepped-plus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 px-6 py-4 rounded-xl text-base font-bold transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
                 onClick={() => setIsOpen(false)}
               >
                 Get Started
-              </button>
+              </a>
             </div>
           </div>
         </div>

@@ -89,12 +89,15 @@ const ServicesPage = () => {
     {
       icon: GraduationCap,
       title: "University Admissions",
-      description: "Complete guidance for university applications worldwide",
+      description: "Complete guidance for university applications worldwide with 95% success rate",
       details: [
-        "University selection strategy",
-        "Personal statement writing",
-        "Interview preparation",
-        "Application timeline management",
+        "US Admissions (Ivy League & Top 50)",
+        "UK Admissions (Oxbridge & Russell Group)",
+        "EU Admissions (Top European institutions)",
+        "APAC Admissions (Leading Asian universities)",
+        "Personal statement & essay writing",
+        "Interview preparation & coaching",
+        "Application strategy & timeline management",
         "Scholarship opportunity identification"
       ]
     }
@@ -154,6 +157,27 @@ const ServicesPage = () => {
       university: "Cambridge University",
       quote: "Perfect 45! The comprehensive approach covering all subjects and the university admissions guidance made all the difference. I couldn't have done it without WellPrepped+.",
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face"
+    },
+    {
+      name: "Sarah Chen",
+      score: "42/45",
+      university: "Harvard University",
+      quote: "With WellPrepped's admissions guidance, I crafted a compelling narrative that showcased my passion for behavioral economics and secured admission to my dream school.",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+    },
+    {
+      name: "James Wilson",
+      score: "44/45",
+      university: "Oxford University",
+      quote: "The interview preparation was invaluable. My tutor helped me think critically and articulate complex ideas clearly for my Oxford interview.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+    },
+    {
+      name: "Maria Rodriguez",
+      score: "43/45",
+      university: "ETH Zurich",
+      quote: "WellPrepped helped me navigate the complex Swiss application system and prepare for the technical assessments required for ETH admission.",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
     }
   ];
 
@@ -225,9 +249,14 @@ const ServicesPage = () => {
                   
                   <div className="border-t border-foreground/10 pt-6">
                     <div className="text-2xl font-bold text-accent mb-4">{service.pricing}</div>
-                    <button className="w-full bg-accent hover:bg-accent/90 text-white py-3 rounded-lg font-semibold transition-colors duration-300">
+                    <a 
+                      href="https://tally.so/r/wellprepped-plus"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full bg-accent hover:bg-accent/90 text-white py-3 rounded-lg font-semibold transition-colors duration-300 text-center"
+                    >
                       Get Started
-                    </button>
+                    </a>
                   </div>
                 </div>
               ))}
@@ -277,8 +306,142 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* Subjects Grid */}
+        {/* College Admissions Section */}
         <section className="bg-background-alt py-20">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-display font-bold text-background mb-6">
+                University Admissions Services
+              </h2>
+              <p className="text-lg text-background/80 max-w-3xl mx-auto leading-relaxed">
+                Our admissions specialists have helped students gain acceptance to the world's most prestigious universities. 
+                With a 95% success rate, we turn university dreams into reality.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+              {[
+                {
+                  region: "US Admissions",
+                  description: "Ivy League and Top 50 universities",
+                  features: [
+                    "Common Application guidance",
+                    "Essay writing workshops", 
+                    "Interview preparation",
+                    "Scholarship applications",
+                    "SAT/ACT preparation"
+                  ],
+                  universities: ["Harvard", "Yale", "MIT", "Stanford", "Columbia", "UPenn"],
+                  color: "bg-primary"
+                },
+                {
+                  region: "UK Admissions", 
+                  description: "Oxbridge and Russell Group universities",
+                  features: [
+                    "UCAS application support",
+                    "Personal statement crafting",
+                    "Interview coaching",
+                    "Oxbridge preparation",
+                    "Subject-specific guidance"
+                  ],
+                  universities: ["Oxford", "Cambridge", "LSE", "UCL", "KCL", "Imperial"],
+                  color: "bg-accent"
+                },
+                {
+                  region: "EU Admissions",
+                  description: "Top European institutions", 
+                  features: [
+                    "Application strategy",
+                    "Language requirements",
+                    "Portfolio development",
+                    "Motivation letters",
+                    "Entrance exam prep"
+                  ],
+                  universities: ["ETH Zurich", "Sciences Po", "Bocconi", "INSEAD", "TU Delft", "KU Leuven"],
+                  color: "bg-secondary"
+                },
+                {
+                  region: "APAC Admissions",
+                  description: "Leading Asian universities",
+                  features: [
+                    "Regional application systems",
+                    "Cultural considerations", 
+                    "Merit scholarship guidance",
+                    "Research opportunities",
+                    "Exchange programs"
+                  ],
+                  universities: ["NUS", "NTU", "HKU", "University of Tokyo", "KAIST", "ANU"],
+                  color: "bg-card"
+                }
+              ].map((service, index) => (
+                <div key={index} className="bg-background rounded-lg p-8 border border-background/10 hover:shadow-xl hover:border-accent/20 transition-all duration-300">
+                  <div className={`w-16 h-16 ${service.color} rounded-lg flex items-center justify-center mb-6`}>
+                    <span className="text-2xl font-bold text-white">
+                      {service.region.split(' ')[0].slice(0, 2)}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-foreground mb-2">
+                    {service.region}
+                  </h3>
+                  <p className="text-foreground/80 mb-6">
+                    {service.description}
+                  </p>
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-foreground mb-3">Services Include:</h4>
+                    <ul className="space-y-2">
+                      {service.features.map((feature, fIndex) => (
+                        <li key={fIndex} className="flex items-center gap-2 text-foreground/80">
+                          <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-3">Target Universities:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {service.universities.map((uni, uIndex) => (
+                        <span key={uIndex} className="bg-foreground text-background px-3 py-1 rounded-full text-sm">
+                          {uni}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Admissions Process */}
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-display font-bold text-background mb-8">
+                Our Admissions Process
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {[
+                { step: "01", title: "Initial Assessment", desc: "Evaluate your profile, goals, and target universities" },
+                { step: "02", title: "Strategy Development", desc: "Create a personalized admissions roadmap" },
+                { step: "03", title: "Application Support", desc: "Essays, interviews, and application optimization" },
+                { step: "04", title: "Final Review", desc: "Polish and submit your applications with confidence" }
+              ].map((item, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                    {item.step}
+                  </div>
+                  <h4 className="text-xl font-display font-bold text-background mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-background/80">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Subjects Grid */}
+        <section className="bg-background py-20">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-5xl font-display font-bold text-background mb-6">
@@ -324,7 +487,7 @@ const ServicesPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
                 <div 
                   key={index} 
@@ -367,12 +530,22 @@ const ServicesPage = () => {
                 Start your journey to academic excellence today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-accent to-primary text-white hover:from-accent/90 hover:to-primary/90 px-8 py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-lg">
-                  Book Free Consultation
-                </button>
-                <button className="bg-background text-background-alt border-2 border-background/20 hover:bg-background/90 px-8 py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105">
-                  View Pricing
-                </button>
+                <a 
+                  href="https://tally.so/r/wellprepped-plus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gradient-to-r from-accent to-primary text-white hover:from-accent/90 hover:to-primary/90 px-8 py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-lg text-center"
+                >
+                  Get Started Now
+                </a>
+                <a 
+                  href="https://calendly.com/wellprepped-plus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-background text-background-alt border-2 border-background/20 hover:bg-background/90 px-8 py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 text-center"
+                >
+                  Book Free Call
+                </a>
               </div>
             </div>
           </div>
