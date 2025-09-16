@@ -1,17 +1,30 @@
 // src/lib/notion.js
 import { Client } from '@notionhq/client';
 
-// Initialize Notion client
-const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
-});
-
+// Initialize Notion client only if environment variables are available
+let notion = null;
 const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID;
+
+try {
+  if (process.env.NOTION_TOKEN && process.env.NOTION_DATABASE_ID) {
+    notion = new Client({
+      auth: process.env.NOTION_TOKEN,
+    });
+  }
+} catch (error) {
+  console.warn('Notion client could not be initialized:', error.message);
+}
 
 /**
  * Fetch all published blog posts from Notion database
  */
 export async function getPosts() {
+  // Return empty array if Notion is not configured
+  if (!notion || !NOTION_DATABASE_ID) {
+    console.warn('Notion not configured - using fallback data');
+    return [];
+  }
+
   try {
     const response = await notion.databases.query({
       database_id: NOTION_DATABASE_ID,
@@ -32,7 +45,8 @@ export async function getPosts() {
     return response.results.map(formatPost);
   } catch (error) {
     console.error('Error fetching posts from Notion:', error);
-    throw error;
+    // Return empty array instead of throwing error during build
+    return [];
   }
 }
 
@@ -40,6 +54,12 @@ export async function getPosts() {
  * Fetch a single post by slug
  */
 export async function getPostBySlug(slug) {
+  // Return null if Notion is not configured
+  if (!notion || !NOTION_DATABASE_ID) {
+    console.warn('Notion not configured - cannot fetch post');
+    return null;
+  }
+
   try {
     const response = await notion.databases.query({
       database_id: NOTION_DATABASE_ID,
@@ -76,7 +96,8 @@ export async function getPostBySlug(slug) {
     };
   } catch (error) {
     console.error('Error fetching post by slug from Notion:', error);
-    throw error;
+    // Return null instead of throwing error during build
+    return null;
   }
 }
 
@@ -84,6 +105,12 @@ export async function getPostBySlug(slug) {
  * Fetch page content (blocks) from Notion
  */
 export async function getPageContent(pageId) {
+  // Return empty array if Notion is not configured
+  if (!notion) {
+    console.warn('Notion not configured - cannot fetch page content');
+    return [];
+  }
+
   try {
     const response = await notion.blocks.children.list({
       block_id: pageId,
@@ -93,7 +120,8 @@ export async function getPageContent(pageId) {
     return response.results.map(formatBlock);
   } catch (error) {
     console.error('Error fetching page content from Notion:', error);
-    throw error;
+    // Return empty array instead of throwing error during build
+    return [];
   }
 }
 
@@ -198,13 +226,20 @@ function calculateReadTime(richTextArray) {
  * Get unique categories from posts
  */
 export async function getCategories() {
+  // Return default categories if Notion is not configured
+  if (!notion || !NOTION_DATABASE_ID) {
+    console.warn('Notion not configured - using default categories');
+    return ['All', 'IB Strategy', 'Admissions', 'University Guide'];
+  }
+
   try {
     const posts = await getPosts();
     const categories = [...new Set(posts.map(post => post.category))];
     return ['All', ...categories];
   } catch (error) {
     console.error('Error fetching categories from Notion:', error);
-    return ['All'];
+    // Return default categories instead of throwing error during build
+    return ['All', 'IB Strategy', 'Admissions', 'University Guide'];
   }
 }
 
