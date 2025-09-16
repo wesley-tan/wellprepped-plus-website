@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,8 @@ const Navigation = () => {
 
   const menuItems = [
     { name: "Home", href: "/", section: "home" },
+    { name: "Our Team", href: "/team", section: "team" },
+    { name: "Services", href: "/services", section: "services" },
     { name: "College Admissions", href: "/college-admissions", section: "admissions" },
     { name: "Blog", href: "/blog", section: "blog" },
     { name: "Contact Us", href: "/contact", section: "contact" },
@@ -74,16 +77,29 @@ const Navigation = () => {
             <div className="ml-10 flex items-baseline space-x-8">
               {menuItems.map((item) => {
                 const isActive = pathname === item.href || (pathname === "/" && activeSection === item.section);
+                
+                // Handle homepage section navigation vs regular page navigation
+                if (pathname === "/" && item.href === "/" && item.section) {
+                  return (
+                    <button
+                      key={item.name}
+                      onClick={() => handleSectionClick(item.section)}
+                      className={`px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-full relative overflow-hidden group ${
+                        isActive
+                          ? "text-accent bg-accent/10 shadow-lg"
+                          : "text-foreground hover:text-accent hover:bg-foreground/5"
+                      }`}
+                    >
+                      <span className="relative z-10">{item.name}</span>
+                      <div className={`absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isActive ? "opacity-30" : ""}`} />
+                    </button>
+                  );
+                }
+                
                 return (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
-                    onClick={(e) => {
-                      if (pathname === "/" && item.section) {
-                        e.preventDefault();
-                        handleSectionClick(item.section);
-                      }
-                    }}
                     className={`px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-full relative overflow-hidden group ${
                       isActive
                         ? "text-accent bg-accent/10 shadow-lg"
@@ -92,7 +108,7 @@ const Navigation = () => {
                   >
                     <span className="relative z-10">{item.name}</span>
                     <div className={`absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isActive ? "opacity-30" : ""}`} />
-                  </a>
+                  </Link>
                 );
               })}
             </div>
@@ -126,18 +142,29 @@ const Navigation = () => {
           <div className="px-4 pt-4 pb-6 space-y-2 bg-background/98 backdrop-blur-md border-t border-foreground/20 shadow-xl">
             {menuItems.map((item) => {
               const isActive = pathname === item.href || (pathname === "/" && activeSection === item.section);
+              
+              // Handle homepage section navigation vs regular page navigation
+              if (pathname === "/" && item.href === "/" && item.section) {
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => handleSectionClick(item.section)}
+                    className={`block w-full text-left px-4 py-3 text-base font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                      isActive
+                        ? "text-accent bg-accent/15 shadow-lg border-l-4 border-accent"
+                        : "text-foreground hover:text-accent hover:bg-foreground/10"
+                    }`}
+                  >
+                    {item.name}
+                  </button>
+                );
+              }
+              
               return (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => {
-                    if (pathname === "/" && item.section) {
-                      e.preventDefault();
-                      handleSectionClick(item.section);
-                    } else {
-                      setIsOpen(false);
-                    }
-                  }}
+                  onClick={() => setIsOpen(false)}
                   className={`block px-4 py-3 text-base font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 ${
                     isActive
                       ? "text-accent bg-accent/15 shadow-lg border-l-4 border-accent"
@@ -145,7 +172,7 @@ const Navigation = () => {
                   }`}
                 >
                   {item.name}
-                </a>
+                </Link>
               );
             })}
             {/* Mobile CTA Button */}
