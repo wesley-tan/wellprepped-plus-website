@@ -3,7 +3,6 @@ import Navigation from "@/components/sections/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPostBySlug, formatDate } from "@/lib/notion";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -58,25 +57,74 @@ const ContentBlock = ({ block }: { block: any }) => {
   }
 };
 
+// Static blog posts data - same as in blog page
+const staticPosts = {
+  "how-to-score-45-points-ib": {
+    title: "How to Score 45 Points in the IB Diploma Programme",
+    excerpt: "Discover the strategies and study techniques that helped our students achieve perfect scores in their IB exams.",
+    date: "March 15, 2024",
+    readTime: "8 min read",
+    category: "IB Strategy",
+    cover: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&h=400&fit=crop&crop=center",
+    content: [
+      { type: "paragraph", content: "Achieving a perfect 45 points in the IB Diploma Programme is the ultimate goal for many students. While challenging, it's absolutely achievable with the right strategies and mindset." },
+      { type: "h2", content: "1. Master Your Study Schedule" },
+      { type: "paragraph", content: "Consistency is key. Create a study schedule that allocates time for each subject while leaving room for unexpected challenges and revision." },
+      { type: "h2", content: "2. Focus on Internal Assessments" },
+      { type: "paragraph", content: "IAs can make or break your final grade. Start early, choose topics you're passionate about, and seek feedback from your teachers throughout the process." },
+      { type: "h2", content: "3. Understand the Assessment Criteria" },
+      { type: "paragraph", content: "Know exactly what examiners are looking for in each component. This knowledge will help you structure your responses effectively." }
+    ]
+  },
+  "oxford-vs-cambridge-guide": {
+    title: "Oxford vs Cambridge: Which is Right for You?",
+    excerpt: "A comprehensive guide to understanding the differences between these prestigious universities and making the right choice.",
+    date: "March 10, 2024",
+    readTime: "12 min read",
+    category: "University Guide",
+    cover: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=400&fit=crop&crop=center",
+    content: [
+      { type: "paragraph", content: "Both Oxford and Cambridge are world-renowned institutions, but they have distinct characteristics that might make one more suitable for you than the other." },
+      { type: "h2", content: "Academic Structure" },
+      { type: "paragraph", content: "Oxford uses a tutorial system with weekly one-on-one or small group sessions, while Cambridge emphasizes supervisions in slightly larger groups." },
+      { type: "h2", content: "College Life" },
+      { type: "paragraph", content: "The college system differs between the two universities, affecting everything from accommodation to social life and academic support." },
+      { type: "h2", content: "Application Process" },
+      { type: "paragraph", content: "While both use UCAS and have similar requirements, the interview processes and specific subject requirements can vary significantly." }
+    ]
+  },
+  "perfect-personal-statement": {
+    title: "Writing the Perfect Personal Statement",
+    excerpt: "Expert tips from our admissions team on crafting compelling personal statements that stand out to admissions officers.",
+    date: "March 5, 2024",
+    readTime: "10 min read",
+    category: "Admissions",
+    cover: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=400&fit=crop&crop=center",
+    content: [
+      { type: "paragraph", content: "Your personal statement is your opportunity to show admissions officers who you are beyond grades and test scores." },
+      { type: "h2", content: "Start with a Hook" },
+      { type: "paragraph", content: "Begin with something that immediately captures the reader's attention and makes them want to learn more about you." },
+      { type: "h2", content: "Show, Don't Tell" },
+      { type: "paragraph", content: "Instead of simply stating that you're passionate about your subject, provide specific examples that demonstrate this passion." },
+      { type: "h2", content: "Connect Everything" },
+      { type: "paragraph", content: "Make sure every paragraph connects back to why you want to study your chosen subject and why you'd be a great addition to their university." }
+    ]
+  }
+};
+
 const BlogPostPage = async ({ params }: BlogPostPageProps) => {
   const { slug } = await params;
-  let post = null;
   
-  try {
-    // Fetch the specific post from Notion
-    post = await getPostBySlug(slug);
-    
-    if (!post) {
-      notFound();
-    }
-  } catch (error) {
-    console.error('Error fetching Notion post:', error);
+  // Get post from static data
+  const post = staticPosts[slug as keyof typeof staticPosts];
+  
+  if (!post) {
     notFound();
   }
 
   const featuredImage = post.cover;
-  const formattedDate = formatDate(post.date);
-  const readingTime = `${post.readTime} min read`;
+  const formattedDate = post.date;
+  const readingTime = post.readTime;
   const categoryName = post.category;
 
   return (

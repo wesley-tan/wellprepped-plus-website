@@ -2,74 +2,73 @@ import React from "react";
 import Navigation from "@/components/sections/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getPosts, getCategories, formatDate } from "@/lib/notion";
 
 const BlogPage = async () => {
-  // Fetch posts and categories from Notion
-  let blogPosts = [];
-  let categories = ["All"];
+  // Static blog posts data
+  const blogPosts = [
+    {
+      id: 1,
+      title: "How to Score 45 Points in the IB Diploma Programme",
+      excerpt: "Discover the strategies and study techniques that helped our students achieve perfect scores in their IB exams.",
+      date: "March 15, 2024",
+      readTime: "8 min read",
+      category: "IB Strategy",
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop&crop=center",
+      slug: "how-to-score-45-points-ib"
+    },
+    {
+      id: 2,
+      title: "Oxford vs Cambridge: Which is Right for You?",
+      excerpt: "A comprehensive guide to understanding the differences between these prestigious universities and making the right choice.",
+      date: "March 10, 2024",
+      readTime: "12 min read",
+      category: "University Guide",
+      image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=250&fit=crop&crop=center",
+      slug: "oxford-vs-cambridge-guide"
+    },
+    {
+      id: 3,
+      title: "Writing the Perfect Personal Statement",
+      excerpt: "Expert tips from our admissions team on crafting compelling personal statements that stand out to admissions officers.",
+      date: "March 5, 2024",
+      readTime: "10 min read",
+      category: "Admissions",
+      image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop&crop=center",
+      slug: "perfect-personal-statement"
+    },
+    {
+      id: 4,
+      title: "IB Physics: Mastering Complex Problem Solving",
+      excerpt: "Step-by-step approaches to tackle the most challenging IB Physics problems and boost your confidence in exams.",
+      date: "March 1, 2024",
+      readTime: "6 min read",
+      category: "IB Strategy",
+      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=250&fit=crop&crop=center",
+      slug: "ib-physics-problem-solving"
+    },
+    {
+      id: 5,
+      title: "Economics IA: A Complete Guide to Success",
+      excerpt: "Everything you need to know about writing an outstanding Economics Internal Assessment that will impress your examiner.",
+      date: "February 25, 2024",
+      readTime: "10 min read",
+      category: "IB Strategy",
+      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop&crop=center",
+      slug: "economics-ia-guide"
+    },
+    {
+      id: 6,
+      title: "Ivy League Admissions: What You Need to Know",
+      excerpt: "Insider tips on what top US universities really look for in international students and how to stand out.",
+      date: "February 20, 2024",
+      readTime: "15 min read",
+      category: "Admissions",
+      image: "https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=250&fit=crop&crop=center",
+      slug: "ivy-league-admissions-guide"
+    }
+  ];
 
-  try {
-    // Fetch Notion data
-    const [notionPosts, notionCategories] = await Promise.all([
-      getPosts(),
-      getCategories()
-    ]);
-
-    // Transform Notion posts to our format
-    blogPosts = notionPosts.map((post: any) => ({
-      id: post.id,
-      title: post.title,
-      excerpt: post.excerpt || "Read more about this topic...",
-      date: formatDate(post.date),
-      readTime: `${post.readTime} min read`,
-      category: post.category,
-      image: post.cover || "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop&crop=center",
-      slug: post.slug,
-      tags: post.tags
-    }));
-
-    // Use Notion categories
-    categories = notionCategories;
-
-  } catch (error) {
-    console.error('Error fetching Notion data:', error);
-
-    // Fallback to static data if Notion is not available
-    blogPosts = [
-      {
-        id: 1,
-        title: "How to Score 45 Points in the IB Diploma Programme",
-        excerpt: "Discover the strategies and study techniques that helped our students achieve perfect scores in their IB exams.",
-        date: "March 15, 2024",
-        readTime: "8 min read",
-        category: "IB Strategy",
-        image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop&crop=center",
-        slug: "how-to-score-45-points-ib"
-      },
-      {
-        id: 2,
-        title: "Oxford vs Cambridge: Which is Right for You?",
-        excerpt: "A comprehensive guide to understanding the differences between these prestigious universities and making the right choice.",
-        date: "March 10, 2024",
-        readTime: "12 min read",
-        category: "University Guide",
-        image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=250&fit=crop&crop=center",
-        slug: "oxford-vs-cambridge-guide"
-      },
-      {
-        id: 3,
-        title: "Writing the Perfect Personal Statement",
-        excerpt: "Expert tips from our admissions team on crafting compelling personal statements that stand out to admissions officers.",
-        date: "March 5, 2024",
-        readTime: "10 min read",
-        category: "Admissions",
-        image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop&crop=center",
-        slug: "perfect-personal-statement"
-      }
-    ];
-    categories = ["All", "IB Strategy", "Admissions", "University Guide"];
-  }
+  const categories = ["All", "IB Strategy", "Admissions", "University Guide"];
 
   return (
     <main className="min-h-screen bg-background">
