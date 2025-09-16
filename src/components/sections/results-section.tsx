@@ -29,7 +29,7 @@ const StatItem = ({ value, label }: { value: string; label: string }) => (
 
 const ResultsSection = () => {
   return (
-    <section className="bg-background py-20">
+    <section className="bg-background py-20" id="results">
       <div className="mx-auto max-w-[1200px] px-6">
         <h2 className="mb-16 text-center font-display text-5xl text-foreground">
           Results by the Numbers

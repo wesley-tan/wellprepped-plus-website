@@ -91,15 +91,19 @@ const BlogPage = async () => {
         {/* Categories Filter */}
         <section className="bg-background-alt py-8">
           <div className="container mx-auto px-6">
-            <div className="flex flex-wrap justify-center gap-4">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  className="px-6 py-2 rounded-full bg-foreground/10 text-background border border-background/20 hover:bg-accent hover:text-accent-foreground transition-colors duration-200 font-medium"
-                >
-                  {category}
-                </button>
-              ))}
+                <div className="flex flex-wrap justify-center gap-4">
+                  {categories.map((category, index) => (
+                    <button
+                      key={category}
+                      className={`px-6 py-3 rounded-full border-2 font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+                        index === 0 
+                          ? "bg-accent text-white border-accent shadow-lg" 
+                          : "bg-foreground/10 text-background border-background/20 hover:bg-accent hover:text-white hover:border-accent"
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
             </div>
           </div>
         </section>
@@ -110,33 +114,34 @@ const BlogPage = async () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.map((post: any, index: number) => (
                 <Link key={post.id || index} href={`/blog/${post.slug}`} className="block">
-                  <article className="bg-background-alt rounded-lg overflow-hidden border border-background/10 hover:shadow-lg hover:border-accent/20 transition-all duration-300 group cursor-pointer">
-                  <div className="relative h-48">
+                  <article className="bg-background-alt rounded-xl overflow-hidden border border-background/10 hover:shadow-2xl hover:border-accent/30 hover:-translate-y-2 transition-all duration-500 group cursor-pointer hover:bg-background-alt/90 backdrop-blur-sm">
+                  <div className="relative h-48 overflow-hidden">
                     <Image
                       src={post.image}
                       alt={post.title}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-semibold">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="bg-accent/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold border border-accent/20 shadow-lg">
                         {post.category}
                       </span>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-display font-bold text-background mb-3 line-clamp-2 group-hover:text-accent transition-colors duration-200">
+                    <h3 className="text-xl font-display font-bold text-background mb-3 line-clamp-2 group-hover:text-accent transition-colors duration-300">
                       {post.title}
                     </h3>
-                    <p className="text-background/90 mb-4 line-clamp-3 leading-relaxed">
+                    <p className="text-background font-medium mb-4 line-clamp-3 leading-relaxed">
                       {post.excerpt}
                     </p>
-                    <div className="flex items-center justify-between text-sm text-background/70">
+                    <div className="flex items-center justify-between text-sm text-background/80 font-medium mb-4">
                       <span>{post.date}</span>
-                      <span>{post.readTime}</span>
+                      <span className="bg-background/20 px-2 py-1 rounded-full">{post.readTime}</span>
                     </div>
-                    <div className="mt-4 text-accent hover:text-accent/80 font-semibold text-sm transition-colors duration-200 flex items-center gap-1">
-                      Read More <span>→</span>
+                    <div className="mt-4 text-accent hover:text-accent/80 font-bold text-sm transition-all duration-300 flex items-center gap-2 group-hover:gap-3">
+                      Read More <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </div>
                   </div>
                   </article>
@@ -147,22 +152,23 @@ const BlogPage = async () => {
         </section>
 
         {/* Newsletter Signup */}
-        <section className="bg-background-alt py-20">
-          <div className="container mx-auto px-6">
+        <section className="bg-gradient-to-r from-background-alt to-background py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5" />
+          <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-4xl font-display font-bold text-background mb-6">
+              <h2 className="text-5xl font-display font-bold text-background mb-6">
                 Stay Updated
               </h2>
-              <p className="text-background/90 mb-8 leading-relaxed">
+              <p className="text-background font-medium mb-8 leading-relaxed text-lg">
                 Get the latest IB study tips, university admissions insights, and exclusive content delivered to your inbox.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-lg bg-foreground text-background border border-background/20 focus:outline-none focus:ring-2 focus:ring-accent placeholder:text-background/60"
+                  className="flex-1 px-5 py-4 rounded-xl bg-white text-background border-2 border-transparent focus:outline-none focus:ring-4 focus:ring-accent/20 focus:border-accent placeholder:text-background/60 font-medium shadow-lg transition-all duration-300"
                 />
-                <button className="bg-accent text-accent-foreground hover:bg-accent/90 px-6 py-3 rounded-lg font-semibold transition-colors duration-200 whitespace-nowrap">
+                <button className="bg-gradient-to-r from-accent to-primary text-white hover:from-accent/90 hover:to-primary/90 px-8 py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap">
                   Subscribe
                 </button>
               </div>

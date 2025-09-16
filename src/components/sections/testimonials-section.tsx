@@ -59,7 +59,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
 
 const TestimonialsSection = () => {
   return (
-    <section className="py-20">
+    <section className="py-20" id="testimonials">
       <div className="container mx-auto flex flex-col items-center px-6">
         <h2 className="max-w-4xl text-center font-display text-4xl leading-tight text-foreground">
           WellPrepped's students come from <strong className="font-semibold">30+ schools across 11+ countries</strong>.

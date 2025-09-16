@@ -1,17 +1,58 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
 
   const menuItems = [
-    { name: "Home", href: "/" },
-    { name: "College Admissions", href: "/college-admissions" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Home", href: "/", section: "home" },
+    { name: "College Admissions", href: "/college-admissions", section: "admissions" },
+    { name: "Blog", href: "/blog", section: "blog" },
+    { name: "Contact Us", href: "/contact", section: "contact" },
   ];
+
+  // Handle smooth scrolling for homepage sections
+  const handleSectionClick = (sectionId: string) => {
+    if (pathname === "/" && sectionId !== "home") {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        setActiveSection(sectionId);
+      }
+    }
+    setIsOpen(false);
+  };
+
+  // Track active section on scroll
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const handleScroll = () => {
+      const sections = ["home", "programme", "services", "results", "testimonials", "faq"];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -31,15 +72,29 @@ const Navigation = () => {
           {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {menuItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200"
-                >
-                  {item.name}
-                </a>
-              ))}
+              {menuItems.map((item) => {
+                const isActive = pathname === item.href || (pathname === "/" && activeSection === item.section);
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      if (pathname === "/" && item.section) {
+                        e.preventDefault();
+                        handleSectionClick(item.section);
+                      }
+                    }}
+                    className={`px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-full relative overflow-hidden group ${
+                      isActive
+                        ? "text-accent bg-accent/10 shadow-lg"
+                        : "text-foreground hover:text-accent hover:bg-foreground/5"
+                    }`}
+                  >
+                    <span className="relative z-10">{item.name}</span>
+                    <div className={`absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isActive ? "opacity-30" : ""}`} />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -67,28 +122,43 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-foreground/10">
-              {menuItems.map((item) => (
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}>
+          <div className="px-4 pt-4 pb-6 space-y-2 bg-background/98 backdrop-blur-md border-t border-foreground/20 shadow-xl">
+            {menuItems.map((item) => {
+              const isActive = pathname === item.href || (pathname === "/" && activeSection === item.section);
+              return (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-foreground hover:text-primary hover:bg-foreground/5 block px-3 py-2 text-base font-medium rounded-md transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    if (pathname === "/" && item.section) {
+                      e.preventDefault();
+                      handleSectionClick(item.section);
+                    } else {
+                      setIsOpen(false);
+                    }
+                  }}
+                  className={`block px-4 py-3 text-base font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                    isActive
+                      ? "text-accent bg-accent/15 shadow-lg border-l-4 border-accent"
+                      : "text-foreground hover:text-accent hover:bg-foreground/10"
+                  }`}
                 >
                   {item.name}
                 </a>
-              ))}
-              {/* Mobile CTA Button */}
-              <div className="pt-4">
-                <button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300">
-                  Get Started
-                </button>
-              </div>
+              );
+            })}
+            {/* Mobile CTA Button */}
+            <div className="pt-4">
+              <button 
+                className="w-full bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 px-6 py-4 rounded-xl text-base font-bold transition-all duration-300 transform hover:scale-105 shadow-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                Get Started
+              </button>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

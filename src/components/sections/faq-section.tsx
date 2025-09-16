@@ -47,16 +47,18 @@ export default function FaqSection() {
               value={`item-${index + 1}`}
               className="bg-background-alt rounded-lg border border-background/10 group shadow-sm hover:shadow-md transition-shadow duration-200"
             >
-              <AccordionTrigger className="text-background hover:no-underline p-6 text-xl text-left justify-start [&>svg:last-child]:hidden hover:bg-background/5 transition-colors duration-200">
+              <AccordionTrigger className="text-background hover:no-underline p-6 text-xl text-left justify-start [&>svg:last-child]:hidden hover:bg-accent/10 transition-all duration-300 group">
                 <div className="flex items-center gap-5 w-full">
-                  <Plus className="h-6 w-6 text-background flex-shrink-0 transition-transform duration-300 group-data-[state=open]:rotate-45" />
-                  <span className="font-body font-semibold text-background">{item.question}</span>
+                  <div className="bg-accent/20 p-2 rounded-full transition-all duration-300 group-hover:bg-accent/30 group-data-[state=open]:bg-accent">
+                    <Plus className="h-5 w-5 text-background flex-shrink-0 transition-transform duration-300 group-data-[state=open]:rotate-45 group-data-[state=open]:text-white" />
+                  </div>
+                  <span className="font-body font-bold text-background group-hover:text-accent/90 transition-colors duration-300">{item.question}</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="text-background px-6 pb-6 pt-0 font-body text-base leading-relaxed">
-                <div className="pl-[44px] border-l-2 border-accent/20 ml-3">
+                <div className="pl-[44px] border-l-4 border-accent/40 ml-3 bg-background/10 p-4 rounded-r-lg">
                   {item.answer.split("\n\n").map((paragraph, pIndex) => (
-                    <p key={pIndex} className="mb-4 last:mb-0 text-background/90">
+                    <p key={pIndex} className="mb-4 last:mb-0 text-background font-medium leading-7">
                       {paragraph}
                     </p>
                   ))}

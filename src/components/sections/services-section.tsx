@@ -7,7 +7,7 @@ const ServicesSection = () => {
   };
 
   return (
-    <section className="bg-background py-20">
+    <section className="bg-background py-20" id="services">
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center gap-10 lg:gap-16">
           <h2 className="font-display text-5xl text-center text-foreground">
